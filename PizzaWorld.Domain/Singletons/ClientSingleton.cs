@@ -5,6 +5,7 @@ using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Singletons {
     public class ClientSingleton {
+        private const string _path = @"./pizzaworld.xml";
         private static ClientSingleton _instance;
         public List<Store> Stores { get; set; }
         public static ClientSingleton Instance {
@@ -15,25 +16,31 @@ namespace PizzaWorld.Domain.Singletons {
 
         }
         private ClientSingleton() {
-            Stores = new List<Store>();
-        }
-
-        public void GetAllStores() {
-
+            Read();
         }
 
         public void MakeStore() {
-            var s = new Store();
-            Stores.Add(s);
+            Stores.Add(new Store());
             Save();
         }
 
-        public void Save() {
-            string path = @"./pizzaworld.xml";
-            var file = new StreamWriter(path);
+        private void Save() {
+            var file = new StreamWriter(_path);
             var xml = new XmlSerializer(typeof(List<Store>));
 
             xml.Serialize(file, Stores);
+        }
+
+        private void Read() {
+            if(!File.Exists(_path)) {
+                Stores = new List<Store>();
+            }
+
+            var file = new StreamReader(_path);
+            var xml = new XmlSerializer(typeof(List<Store>));
+
+            Stores = xml.Deserialize(file) as List<Store>; //null if cannot convert
+            //Stores = (List<Store>)xml.Deserialize(file); //exception if cannot convert
         }
     }
 }
