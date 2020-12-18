@@ -5,7 +5,7 @@ namespace PizzaWorld.Domain.Models {
 
         public List<Order> Orders { get; set; }
 
-        void CreateOrder() {
+        public void CreateOrder() {
             Orders.Add(new Order());
         }
 
