@@ -10,6 +10,7 @@ namespace PizzaWorld.Domain.Singletons {
         private const string _path = @"./pizzaworld.xml";
         private static ClientSingleton _instance;
         public List<Store> Stores { get; set; }
+        public List<Pizza> Pizzas { get; set; }
         public static ClientSingleton Instance {
             get {
                 if(_instance == null) _instance = new ClientSingleton();

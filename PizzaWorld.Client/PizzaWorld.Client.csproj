@@ -2,6 +2,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PizzaWorld.Domain\PizzaWorld.Domain.csproj" />
+    <ProjectReference Include="..\PizzaWorld.Storing\PizzaWorld.Storing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="5.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <PropertyGroup>
