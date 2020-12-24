@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PizzaWorld.Domain\PizzaWorld.Domain.csproj" />
-    <ProjectReference Include="..\PizzaWorld.Domain\PizzaWorld.Storing.csproj" />
   </ItemGroup>
 
 </Project>

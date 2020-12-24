@@ -7,6 +7,7 @@ namespace PizzaWorld.Domain.Models {
 
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
+        public double Price { get; set; }
 
         public Order() {
             Pizzas = new List<APizzaModel>();
