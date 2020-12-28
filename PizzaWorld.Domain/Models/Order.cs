@@ -13,8 +13,8 @@ namespace PizzaWorld.Domain.Models {
             Pizzas = new List<APizzaModel>();
         }
 
-        public void MakePizza() {
-            Pizzas.Add(_pizzaFactory.Make<Pizza>());
+        public void MakePizza(string Crust, string Size, List<string> Toppings) {
+            Pizzas.Add(new Pizza(Crust, Size, Toppings));
         }
         
     }

@@ -28,6 +28,13 @@ namespace PizzaWorld.Storing {
                     new Store() { EntityId = 3, Name = "Pizza Hut" }
                 }
             );
+
+            builder.Entity<User>().HasData(new List<User>
+                {
+                    new User() { EntityId = 1, Name = "Michael"},
+                    new User() { EntityId = 2, Name = "Shulk"}
+                }
+            );
         }
     }
 }

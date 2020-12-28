@@ -42,5 +42,11 @@ namespace PizzaWorld.Client {
             
             return ReadOneStore(input);
         }
+
+        public User SelectUser() {
+            string input = Console.ReadLine();
+
+            return ReadOneUser(input);
+        }
     }
 }
