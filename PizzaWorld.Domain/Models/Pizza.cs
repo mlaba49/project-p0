@@ -12,9 +12,9 @@ namespace PizzaWorld.Domain.Models {
             AddToppings(_Toppings);
 
             Price = 9.99;
-            if(Crust == "cheese") Price += 5;
-            if(Size == "small") Price -= 5;
-            if(Size == "large") Price += 5;
+            if(Crust == "CHEESE") Price += 5;
+            if(Size == "SMALL") Price -= 5;
+            if(Size == "LARGE") Price += 5;
             Price += Toppings.Count * 5;
         }
 

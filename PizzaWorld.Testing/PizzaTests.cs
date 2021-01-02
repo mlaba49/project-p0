@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PizzaWorld.Domain.Models;
 using Xunit;
 
@@ -6,7 +7,7 @@ namespace PizzaWorld.Testing {
         [Fact]
         private void Test_PizzaExists() {
             //arrange
-            var sut = new Pizza();
+            var sut = new Pizza("normal", "medium", new List<string>{"cheese", "pepperoni"});
 
             //act
             var actual = sut;
