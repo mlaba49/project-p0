@@ -16,13 +16,17 @@ namespace PizzaWorld.Domain.Models {
             Pizzas = new List<APizzaModel>();
         }
 
-        public void MakePizza(string Crust, string Size, List<string> Toppings) {
-            Pizza p = new Pizza(Crust, Size, Toppings);
+        public void MakePizza(string Crust, string Size, string Topping1, string Topping2, string Topping3, string Topping4, string Topping5) {
+            Pizza p = new Pizza(Crust, Size, Topping1, Topping2, Topping3, Topping4, Topping5);
             Price += 9.99;
             if(p.Crust == "CHEESE") Price += 5;
             if(p.Size == "SMALL") Price -= 5;
             if(p.Size == "LARGE") Price += 5;
-            Price += p.Toppings.Count * 5;
+            if(Topping1 != "") Price += 5;
+            if(Topping2 != "") Price += 5;
+            if(Topping3 != "") Price += 5;
+            if(Topping4 != "") Price += 5;
+            if(Topping5 != "") Price += 5;
             Pizzas.Add(p);
         }
 

@@ -85,19 +85,19 @@ namespace PizzaWorld.Client
                 Console.WriteLine("You have selected the basic pizza.");
                 user.SelectedStore.CreateOrder();
                 user.Orders.Add(user.SelectedStore.Orders.Last());
-                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", new List<string>{"cheese", "pepperoni"});
+                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", "cheese", "pepperoni", "", "", "");
                 break;
                 case "MEAT LOVERS":
                 Console.WriteLine("You have selected the meat lovers pizza.");
                 user.SelectedStore.CreateOrder();
                 user.Orders.Add(user.SelectedStore.Orders.Last());
-                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", new List<string>{"cheese", "pepperoni", "bacon", "ham"});
+                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", "cheese", "pepperoni", "bacon", "ham", "");
                 break;
                 case "VEGETARIAN":
                 Console.WriteLine("You have selected the vegetarian pizza.");
                 user.SelectedStore.CreateOrder();
                 user.Orders.Add(user.SelectedStore.Orders.Last());
-                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", new List<string>{"cheese", "pineapple", "onion"});
+                user.Orders.Last().MakePizza("NORMAL", "MEDIUM", "cheese", "pineapple", "onion", "", "");
                 break;
                 case "CUSTOM":
                 Console.WriteLine("You have decided to build your own pizza.");
@@ -243,14 +243,45 @@ namespace PizzaWorld.Client
                 }
                 user.SelectedStore.CreateOrder();
                 user.Orders.Add(user.SelectedStore.Orders.Last());
-                List<string> toppingList = new List<string>();
-                if(cheese == true) toppingList.Add("cheese");
-                if(pepperoni == true) toppingList.Add("pepperoni");
-                if(bacon == true) toppingList.Add("bacon");
-                if(ham == true) toppingList.Add("ham");
-                if(pineapple == true) toppingList.Add("pineapple");
-                if(onion == true) toppingList.Add("onion");
-                user.Orders.Last().MakePizza(crust, size, toppingList);
+                string[] toppings = new string[5];
+                toppings[0] = "";
+                toppings[1] = "";
+                toppings[2] = "";
+                toppings[3] = "";
+                toppings[4] = "";
+                for(int i = 0; i < 5; i++) {
+                    if(cheese == true) {
+                        toppings[i] = "extra_cheese";
+                        cheese = false;
+                        continue;
+                    }
+                    if(pepperoni == true) {
+                        toppings[i] = "pepperoni";
+                        pepperoni = false;
+                        continue;
+                    }
+                    if(bacon == true) {
+                        toppings[i] = "bacon";
+                        bacon = false;
+                        continue;
+                    }
+                    if(ham == true) {
+                        toppings[i] = "ham";
+                        ham = false;
+                        continue;
+                    }
+                    if(pineapple == true) {
+                        toppings[i] = "pineapple";
+                        pineapple = false;
+                        continue;
+                    }
+                    if(onion == true) {
+                        toppings[i] = "onion";
+                        onion = false;
+                        continue;
+                    }
+                }
+                user.Orders.Last().MakePizza(crust, size, toppings[0], toppings[1], toppings[2], toppings[3], toppings[4]);
                 break;
                 case "USERORDER":
                 Console.WriteLine("You have decided to view your own order history.");
