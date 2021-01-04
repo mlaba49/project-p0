@@ -7,9 +7,11 @@ namespace PizzaWorld.Storing {
     public class PizzaWorldContext : DbContext {
         public DbSet<Store> Stores { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<APizzaModel> APizzaModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder) {
-            builder.UseSqlServer("Server=michaelpizzaworlddb.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=[REDACTED];");
+            builder.UseSqlServer("Server=michaelpizzaworlddb.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=password1!;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder) {

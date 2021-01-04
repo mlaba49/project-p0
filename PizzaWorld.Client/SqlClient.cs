@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Storing;
 
@@ -35,6 +36,14 @@ namespace PizzaWorld.Client {
         public IEnumerable<Order> ReadOrders(Store store) {
             var s = ReadOneStore(store.Name);
             return s.Orders;
+        }
+
+        public IEnumerable<Order> ReadAllOrders() {
+            return _db.Order;
+        }
+
+        public IEnumerable<APizzaModel> ReadAllPizzas() {
+            return _db.APizzaModel;
         }
 
         public Store SelectStore() {

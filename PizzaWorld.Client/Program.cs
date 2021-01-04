@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Domain.Singletons;
 
@@ -243,11 +244,31 @@ namespace PizzaWorld.Client
                 break;
                 case "USERORDER":
                 Console.WriteLine("You have decided to view your own order history.");
-                Console.WriteLine(user.Orders);
+                IEnumerable<Order> myOrders = _sql.ReadAllOrders();
+                IEnumerable<APizzaModel> myPizzas = _sql.ReadAllPizzas();
+                List<Order> listOfOrders = new List<Order>();
+                foreach(var o in myOrders) {
+                    if(o.UserEntityId == user.EntityId) listOfOrders.Add(o);
+                }
+                foreach(var p in myPizzas) {
+                    foreach(var o in listOfOrders) {
+                        if(p.OrderEntityId == o.EntityId) Console.WriteLine(p + ", Price: " + o.Price);
+                    }
+                }
                 break;
                 case "STOREORDER":
                 Console.WriteLine("You have decided to view the store's order history.");
-                Console.WriteLine(user.SelectedStore.Orders);
+                myOrders = _sql.ReadAllOrders();
+                myPizzas = _sql.ReadAllPizzas();
+                listOfOrders = new List<Order>();
+                foreach(var o in myOrders) {
+                    if(o.StoreEntityId1 == user.SelectedStore.EntityId) listOfOrders.Add(o);
+                }
+                foreach(var p in myPizzas) {
+                    foreach(var o in listOfOrders) {
+                        if(p.OrderEntityId == o.EntityId) Console.WriteLine(p + ", Price: " + o.Price);
+                    }
+                }
                 break;
                 default:
                 Console.WriteLine("That's not a valid option, fool!");

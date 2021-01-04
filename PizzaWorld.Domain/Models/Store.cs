@@ -6,7 +6,6 @@ namespace PizzaWorld.Domain.Models {
 
         public string Name { get; set; }
         public List<Order> Orders { get; set; }
-        public List<Order> CompletedOrders { get; set; }
 
         public Store() {
             Orders = new List<Order>();

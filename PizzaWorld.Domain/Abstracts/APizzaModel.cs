@@ -1,11 +1,16 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaWorld.Domain.Abstracts {
 
     public class APizzaModel : AEntity {
         public string Crust { get; set; }
         public string Size { get; set; }
+        
+        [NotMapped]
         public List<string> Toppings { get; set; }
+
+        public long OrderEntityId { get; set; }
 
         public APizzaModel() {
             
@@ -27,6 +32,11 @@ namespace PizzaWorld.Domain.Abstracts {
 
         protected virtual void AddToppings(List<string> _Toppings) {
             Toppings = _Toppings;
+        }
+
+        public override string ToString()
+        {
+            return "Crust: " + Crust + ", Size: " + Size;
         }
     }
 

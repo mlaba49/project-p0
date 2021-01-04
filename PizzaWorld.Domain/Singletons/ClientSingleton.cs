@@ -28,17 +28,6 @@ namespace PizzaWorld.Domain.Singletons {
             Save();
         }
 
-        public bool TryParse2(string y, out int x) {
-            x = 0;
-            try {
-                x = int.Parse(y);
-            }
-            catch {
-                return false;
-            }
-            return true;
-        }
-
         public Store SelectStore() {
             int.TryParse(Console.ReadLine(), out int input);
             
