@@ -172,6 +172,16 @@ namespace PizzaWorld.Client
                             toppingCount++;
                         }
                         break;
+                        case "EXTRA CHEESE":
+                        if(cheese == true) {
+                            cheese = false;
+                            toppingCount--;
+                        }
+                        else {
+                            cheese = true;
+                            toppingCount++;
+                        }
+                        break;
                         case "PEPPERONI":
                         if(pepperoni == true) {
                             pepperoni = false;

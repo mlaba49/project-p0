@@ -12,7 +12,9 @@ namespace PizzaWorld.Domain.Models {
         }
 
         public void CreateOrder() {
-            Orders.Add(new Order());
+            Order o = new Order();
+            o.AssignId(EntityId);
+            Orders.Add(o);
         }
 
         bool DeleteOrder(Order order) {

@@ -35,6 +35,10 @@ namespace PizzaWorld.Domain.Models {
             return $"You have ordered these pizzas: {sb.ToString()}";
         }
 
+        public void AssignId(long id) {
+            StoreEntityId1 = id;
+        }
+
         
     }
 }
